@@ -4,4 +4,6 @@ import $ from "jquery";
 
 // var $ = require("jquery");
 // node中模块化的语法
-$("body").css("background", "red");
+// $("body").css("background", "blue");
+
+import "./css/index.scss";
