@@ -24,6 +24,29 @@ module.exports = {
           "sass-loader", //将scss语法转化为css语法
         ],
       },
+      {
+        test: /\.(jpg|png|gif)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 10000, //图片大小大于8kb的时候会把图片直接输出在dist文件夹下，如果小于8kb的时候就输出为base64位编码
+              name: "images/[name].[ext]",
+              //图片输出在dist文件夹下的路径
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ttf|eot|svg|woff|woff2)$/,
+        use: "url-loader",
+        //对字体图标文件进行转化
+      },
+      {
+        test: /\.js$/,
+        use: "babel-loader",
+        exclude: /node_modules/,
+      },
     ],
   },
 
