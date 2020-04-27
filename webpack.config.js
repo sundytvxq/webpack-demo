@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 module.exports = {
   mode: "development",
   //定义打包模式
@@ -47,6 +48,10 @@ module.exports = {
         use: "babel-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.vue$/,
+        use: "vue-loader",
+      },
     ],
   },
 
@@ -76,5 +81,6 @@ module.exports = {
       hash: true,
       //路径后是否需要添加hash
     }),
+    new VueLoaderPlugin(),
   ],
 };

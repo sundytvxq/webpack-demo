@@ -1,16 +1,18 @@
-// console.log("hello world");
-// import $ from "jquery";
-// es6中模块化的语法
+import Vue from "vue";
+import App from "./app.vue";
+import router from "./router";
+import axios from "axios";
+Vue.prototype.axios = axios;
+// 把axios方法挂载到Vue原型上，就可以被所有的vue实例（组件）所使用
+axios.defaults.baseURL = "http://jsonplaceholder.typicode.com";
 
-// var $ = require("jquery");
-// node中模块化的语法
-// $("body").css("background", "blue");
+import store from "./vuex";
 
-// import "./css/index.scss";
-// import img1 from "./img/siri1.jpg";
-
-const fun1 = () => {
-  console.log("arrow function");
-};
-const arr1 = [1, 2, 3];
-const arr2 = [...arr1];
+var vm = new Vue({
+  el: "#app",
+  render: function(c) {
+    return c(App);
+  },
+  router,
+  store,
+});
